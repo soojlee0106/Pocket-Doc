@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+* {
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,7 +37,29 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url(back-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 50px;
+}
+
+.center {
+  width: 100%;
+  height: 50%;
+  margin: 0;
+  position: absolute;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 6px gray;
+  font-size: 40px;
 }

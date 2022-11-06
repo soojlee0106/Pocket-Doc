@@ -2,9 +2,12 @@ import './App.css';
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to Pocket doc.</h1>
-    </div>
+    <body>
+      <div class="center">
+        <h1>Welcome to Pocket doc.</h1>
+        <p> Take a seat. </p>
+      </div>
+    </body>
   );
 }
 
