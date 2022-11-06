@@ -7,8 +7,8 @@ function App() {
       <div class="center">
         <h1>Welcome to Pocket doc.</h1>
         <p> Take a seat. </p>
+        <Chatbot />
       </div>
-      <Chatbot />
     </body>
   );
 }
