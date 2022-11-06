@@ -8,17 +8,15 @@ class Splash extends Component {
 
     componentDidMount() {
         const splash = document.querySelector('.splash');
-        document.addEventListener('DOMContentLoaded', (e) => {
-            setTimeout(() => {
-                splash.classList.add('display-none');
-            }, 3000);
-        })
+        setTimeout(() => {
+            splash.classList.add('display-none');
+        }, 3000);
     }
 
     render() {
         return (
             < div class="splash" >
-                <h1 class="fade-in">Welcome to Pocket doc.</h1>
+                <h1 class="fade-in">Welcome to Pocket Doc.</h1>
             </div >
         )
     }

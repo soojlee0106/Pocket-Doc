@@ -11,63 +11,29 @@ class Chatbot extends Component {
 
         // input options
         const utterances = [
-
-            ["how are you", "how is life", "how are things"],
-            ["hi", "hey", "hello", "good morning", "good afternoon"],
-            ["what are you doing", "what is going on", "what is up"],
-            ["how old are you"],
-            ["who are you", "are you human", "are you bot", "are you human or bot"],
-            ["who created you", "who made you"],
-            [
-                "your name please",
-                "your name",
-                "may i know your name",
-                "what is your name",
-                "what call yourself"
-            ],
-            ["happy", "good", "fun", "wonderful", "fantastic", "cool"],
-            ["bad", "bored", "tired"],
-            ["help me", "tell me story", "tell me joke"],
-            ["ah", "yes", "ok", "okay", "nice"],
-            ["bye", "good bye", "goodbye", "see you later"],
-            ["what should i eat today"],
-            ["what", "why", "how", "where", "when"],
-            ["no", "not sure", "maybe", "no thanks"],
+            ["good"],
+            ["anxious"],
+            ["depressed"],
             [""],
-            ["haha", "ha", "lol", "hehe", "funny", "joke"]
+            ["ayes"]
         ];
 
         // Possible responses corresponding to triggers
 
         const answers = [
             [
-                "Fine... how are you?",
-                "Pretty well, how are you?",
-                "Fantastic, how are you?"
+                "Fantastic to hear that. Tell me more about your day.",
+                "I'm so happy for you. Please tell me the details about your day."
             ],
             [
-                "Hello!", "Hi!", "Hey!", "Hi there!", "Howdy"
+                "Let's go through basic exercises to relax you. Would you like to try? ayes / ano"
             ],
             [
-                "Nothing much",
-                "About to go to sleep",
-                "Can you guess?",
-                "I don't know actually"
+                "Please remember I am here for you. I have some exercises to help you through this moment. dyes / dno"
             ],
-            ["I am infinite"],
-            ["I am just a bot", "I am a bot. What are you?"],
-            ["The one true God, JavaScript"],
-            ["I am nameless", "I don't have a name"],
-            ["Have you ever felt bad?", "Glad to hear it"],
-            ["Why?", "Why? You shouldn't!"],
-            ["What about?", "Once upon a time..."],
-            ["Tell me a story", "Tell me a joke", "Tell me about yourself"],
-            ["Bye", "Goodbye", "See you later"],
-            ["Pasta", "Burger"],
-            ["Great question"],
-            ["That's ok", "What do you want to talk about?"],
-            ["Please say something :("],
-            ["Haha!", "Good one!"]
+            [""],
+            ["We will try a technique to imagine you in your safe space."]
+
         ];
 
         // Random for any other user input
@@ -147,14 +113,14 @@ class Chatbot extends Component {
 
             setTimeout(() => {
                 botText.innerText = `${product}`;
-            }, 2000);
+            }, 3000);
         }
     }
     render() {
         return (
             <div id="container" class="container">
                 <div id="chat" class="chat">
-                    <div id="messages" class="messages"></div>
+                    <div id="messages" class="messages"> How are you feeling? Good/Anxious/Depressed </div>
                     <input id="input" type="text" placeholder="Write something..." autocomplete="off" autofocus="true" />
                 </div>
             </div>

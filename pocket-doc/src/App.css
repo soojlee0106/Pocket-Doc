@@ -111,6 +111,7 @@ input {
 
 #bot {
   margin-right: auto;
+  color: darkolivegreen;
 }
 
 #user {
@@ -164,6 +165,7 @@ input {
   background-repeat: no-repeat;
   background-size: cover;
   filter: grayscale(40%);
+  font-size: 40px;
 }
 
 .splash.display-none {
