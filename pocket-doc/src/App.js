@@ -1,4 +1,5 @@
 import './App.css';
+import Chatbot from './chatbot'
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
         <h1>Welcome to Pocket doc.</h1>
         <p> Take a seat. </p>
       </div>
+      <Chatbot />
     </body>
   );
 }
