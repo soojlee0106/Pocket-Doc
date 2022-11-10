@@ -162,6 +162,7 @@ body {
   margin-bottom: 0.5rem;
   text-shadow: none;
   font-size: 20px;
+  box-shadow: 2px 2px 5px hsl(0, 0%, 60%);
 }
 
 .chat-response {
@@ -186,10 +187,11 @@ body {
 }
 
 .chat-ask {
-  background-color: #358856;
+  background-color: #3c9c63;
   margin-right: 0;
   margin-left: auto;
   color: hsl(0, 0%, 100%);
+  box-shadow: 2px 2px 5px hsl(0, 0%, 60%);
 }
 
 .choices {
@@ -207,7 +209,8 @@ body {
 .choice {
   display: inline-block;
   outline: none;
-  border: 1px solid hsl(0, 0%, 0%);
+  border: 1px solid white;
+  box-shadow: 2px 2px 5px hsl(0, 0%, 60%);
   padding: 0.3rem 0.8rem;
   background-color: hsl(0, 0%, 100%);
   border-radius: 1rem;
