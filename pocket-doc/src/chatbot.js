@@ -11,7 +11,7 @@ class Chatbot extends Component {
 
         const chat = {
             1: {
-                text: 'Hi! Welcome to Peekobot.',
+                text: 'Hi! Welcome to Pocket Doc.',
                 options: [
                     {
                         text: '👋',
@@ -20,38 +20,96 @@ class Chatbot extends Component {
                 ]
             },
             2: {
-                text: 'Peekobot is a really simple, choice-driven chatbot framework made in <del>less than</del> just over 100 lines of vanilla JavaScript',
-                next: 3
-            },
-            3: {
-                text: 'But you probably knew that anyway.',
+                text: 'How do you feel today?',
                 options: [
                     {
-                        text: "Yes, I did!",
-                        next: 4
+                        text: "I'm feeling great!",
+                        next: 3
                     },
                     {
-                        text: "Nope, this is news.",
-                        next: 5
+                        text: "Not feeling that great.",
+                        next: 4
                     }
+                ]
+            },
+            3: {
+                text: "Sounds fantastic. I'm so happy for you.",
+                options: [
+                    {
+                        text: "😊",
+                        next: 5
+                    },
                 ]
             },
             4: {
-                text: 'Awesome. This chat is still in development. Happy coding!',
-            },
-            5: {
-                text: 'Aah, you\'re missing out!',
-                next: 6
-            },
-            6: {
-                text: 'You should check it out on GitHub',
+                text: "I'm here to help. Which of these feelings is the closest to how you feel now?",
                 options: [
                     {
-                        text: "Go to GitHub",
-                        url: "https://github.com/peekobot/peekobot"
-                    }
+                        text: "I'm anxious 😰",
+                        next: 7
+                    },
+                    {
+                        text: "I'm depressed 😥",
+                        next: 8
+                    },
+                    {
+                        text: "I'm feeling impulsive 🔥",
+                        next: 9
+                    },
                 ]
-            }
+            },
+            5: {
+                text: 'Feel free to come by any time you need help!',
+                options: [
+                    {
+                        text: "Got it.",
+                        next: 6
+                    },
+                ]
+            },
+            6: {
+                text: 'Click restart below to start over.',
+            },
+            7: {
+                text: "We can get through this together. Are you in immediate harm or feel your life is at risk?",
+                options: [
+                    {
+                        text: "Yes",
+                        next: 10
+                    },
+                    {
+                        text: "No",
+                        next: 11
+                    },
+                ]
+            },
+            8: {
+                text: "We can get through this together. Are you in immediate harm or feel your life is at risk?",
+                options: [
+                    {
+                        text: "Yes",
+                        next: 12
+                    },
+                    {
+                        text: "No",
+                        next: 13
+                    },
+                ]
+            },
+            9: {
+                text: "We can get through this together. Are you in immediate harm or feel your life is at risk?",
+                options: [
+                    {
+                        text: "Yes",
+                        next: 14
+                    },
+                    {
+                        text: "No",
+                        next: 15
+                    },
+                ]
+            },
+
         };
 
 
