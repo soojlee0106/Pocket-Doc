@@ -88,7 +88,20 @@ class Chatbot extends Component {
                 options: [
                     {
                         text: "Yes",
+                        next: 10
+                    },
+                    {
+                        text: "No",
                         next: 12
+                    },
+                ]
+            },
+            9: {
+                text: "We can get through this together. Are you in immediate harm or feel your life is at risk?",
+                options: [
+                    {
+                        text: "Yes",
+                        next: 10
                     },
                     {
                         text: "No",
@@ -96,8 +109,8 @@ class Chatbot extends Component {
                     },
                 ]
             },
-            9: {
-                text: "We can get through this together. Are you in immediate harm or feel your life is at risk?",
+            10: {
+                text: "Has any form of lethal harm already been done?",
                 options: [
                     {
                         text: "Yes",
@@ -108,6 +121,35 @@ class Chatbot extends Component {
                         next: 15
                     },
                 ]
+            },
+            14: {
+                text: "Please dial 119 and or 112 immediately.",
+                next: 16
+            },
+            15: {
+                text: "These are the list of hotlines and crisis lines in South Korea. Please reach out to them now. We recommend you start with 1588-9191.",
+                options: [
+                    {
+                        text: "Crisis Lines",
+                        url: "https://www.therapyroute.com/article/suicide-hotlines-and-crisis-lines-in-south-korea"
+                    },
+                ]
+            },
+            16: {
+                text: "We are all here to help you. So call us.",
+                next: 17
+            },
+            17: {
+                text: "I'll always be here, and waiting until you're back. Let's talk again after we get you immediate help.",
+                options: [
+                    {
+                        text: "Got it.",
+                        next: 18
+                    },
+                ]
+            },
+            18: {
+                text: "We can get through this together. I'm here by your side.",
             },
 
         };
