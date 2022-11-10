@@ -9,119 +9,178 @@ class Chatbot extends Component {
 
     componentDidMount() {
 
-        // input options
-        const utterances = [
-            ["good"],
-            ["anxious"],
-            ["depressed"],
-            [""],
-            ["ayes"]
-        ];
-
-        // Possible responses corresponding to triggers
-
-        const answers = [
-            [
-                "Fantastic to hear that. Tell me more about your day.",
-                "I'm so happy for you. Please tell me the details about your day."
-            ],
-            [
-                "Let's go through basic exercises to relax you. Would you like to try? ayes / ano"
-            ],
-            [
-                "Please remember I am here for you. I have some exercises to help you through this moment. dyes / dno"
-            ],
-            [""],
-            ["We will try a technique to imagine you in your safe space."]
-
-        ];
-
-        // Random for any other user input
-
-        const alternatives = [
-            "Go on...",
-            "Try again",
-        ];
-
-        const inputField = document.getElementById("input");
-        inputField.addEventListener("keydown", (e) => {
-            if (e.code === "Enter") {
-                let input = inputField.value;
-                inputField.value = "";
-                output(input);
-            }
-        });
-
-        function output(input) {
-            let product;
-            let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
-            text = text
-                .replace(/ a /g, " ")
-                .replace(/whats/g, "what is")
-                .replace(/please /g, "")
-                .replace(/ please/g, "")
-                .replace(/r u/g, "are you");
-
-            if (compare(utterances, answers, text)) {
-                // Search for exact match in triggers
-                product = compare(utterances, answers, text);
-            }
-            else {
-                product = alternatives[Math.floor(Math.random() * alternatives.length)];
-            }
-
-            addChatEntry(input, product);
-        }
-
-        function compare(utterancesArray, answersArray, string) {
-            let reply;
-            let replyFound = false;
-            for (let x = 0; x < utterancesArray.length; x++) {
-                for (let y = 0; y < utterancesArray[x].length; y++) {
-                    if (utterancesArray[x][y] === string) {
-                        let replies = answersArray[x];
-                        reply = replies[Math.floor(Math.random() * replies.length)];
-                        replyFound = true;
-                        break;
+        const chat = {
+            1: {
+                text: 'Hi! Welcome to Peekobot.',
+                options: [
+                    {
+                        text: '👋',
+                        next: 2
                     }
-                }
-                if (replyFound) {
-                    break;
-                }
+                ]
+            },
+            2: {
+                text: 'Peekobot is a really simple, choice-driven chatbot framework made in <del>less than</del> just over 100 lines of vanilla JavaScript',
+                next: 3
+            },
+            3: {
+                text: 'But you probably knew that anyway.',
+                options: [
+                    {
+                        text: "Yes, I did!",
+                        next: 4
+                    },
+                    {
+                        text: "Nope, this is news.",
+                        next: 5
+                    }
+                ]
+            },
+            4: {
+                text: 'Awesome. This chat is still in development. Happy coding!',
+            },
+            5: {
+                text: 'Aah, you\'re missing out!',
+                next: 6
+            },
+            6: {
+                text: 'You should check it out on GitHub',
+                options: [
+                    {
+                        text: "Go to GitHub",
+                        url: "https://github.com/peekobot/peekobot"
+                    }
+                ]
             }
-            return reply;
+        };
+
+
+        const bot = function () {
+
+            const peekobot = document.getElementById('peekobot');
+            const container = document.getElementById('peekobot-container');
+            const inner = document.getElementById('peekobot-inner');
+            let restartButton = null;
+
+            const sleep = function (ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            };
+
+            const scrollContainer = function () {
+                inner.scrollTop = inner.scrollHeight;
+            };
+
+            const insertNewChatItem = function (elem) {
+                //container.insertBefore(elem, peekobot);
+                peekobot.appendChild(elem);
+                scrollContainer();
+                //debugger;
+                elem.classList.add('activated');
+            };
+
+            const printResponse = async function (step) {
+                const response = document.createElement('div');
+                response.classList.add('chat-response');
+                response.innerHTML = step.text;
+                insertNewChatItem(response);
+
+                await sleep(1500);
+
+                if (step.options) {
+                    const choices = document.createElement('div');
+                    choices.classList.add('choices');
+                    step.options.forEach(function (option) {
+                        const button = document.createElement(option.url ? 'a' : 'button');
+                        button.classList.add('choice');
+                        button.innerHTML = option.text;
+                        if (option.url) {
+                            button.href = option.url;
+                        } else {
+                            button.dataset.next = option.next;
+                        }
+                        choices.appendChild(button);
+                    });
+                    insertNewChatItem(choices);
+                } else if (step.next) {
+                    printResponse(chat[step.next]);
+                }
+            };
+
+            const printChoice = function (choice) {
+                const choiceElem = document.createElement('div');
+                choiceElem.classList.add('chat-ask');
+                choiceElem.innerHTML = choice.innerHTML;
+                insertNewChatItem(choiceElem);
+            };
+
+            const disableAllChoices = function () {
+                const choices = document.querySelectorAll('.choice');
+                choices.forEach(function (choice) {
+                    choice.disabled = 'disabled';
+                });
+                return;
+            };
+
+            const handleChoice = async function (e) {
+
+                if (!e.target.classList.contains('choice') || 'A' === e.target.tagName) {
+                    // Target isn't a button, but could be a child of a button.
+                    var button = e.target.closest('#peekobot-container .choice');
+
+                    if (button !== null) {
+                        button.click();
+                    }
+
+                    return;
+                }
+
+                e.preventDefault();
+                const choice = e.target;
+
+                disableAllChoices();
+
+                printChoice(choice);
+                scrollContainer();
+
+                await sleep(1500);
+
+                if (choice.dataset.next) {
+                    printResponse(chat[choice.dataset.next]);
+                }
+                // Need to disable buttons here to prevent multiple choices
+            };
+
+            const handleRestart = function () {
+                startConversation();
+            }
+
+            const startConversation = function () {
+                printResponse(chat[1]);
+            }
+
+            const init = function () {
+                container.addEventListener('click', handleChoice);
+
+                restartButton = document.createElement('button');
+                restartButton.innerText = "Restart";
+                restartButton.classList.add('restart');
+                restartButton.addEventListener('click', handleRestart);
+
+                container.appendChild(restartButton);
+
+                startConversation();
+            };
+
+            init();
         }
 
-        function addChatEntry(input, product) {
-            const messagesContainer = document.getElementById("messages");
-            let userDiv = document.createElement("div");
-            userDiv.id = "user";
-            userDiv.className = "user response";
-            userDiv.innerHTML = `<span>${input}</span>`;
-            messagesContainer.appendChild(userDiv);
-
-            let botDiv = document.createElement("div");
-            let botText = document.createElement("span");
-            botDiv.id = "bot";
-            botDiv.className = "bot response";
-            botText.innerText = "Typing...";
-            botDiv.appendChild(botText);
-            messagesContainer.appendChild(botDiv);
-
-            messagesContainer.scrollTop =
-                messagesContainer.scrollHeight - messagesContainer.clientHeight;
-
-            setTimeout(() => {
-                botText.innerText = `${product}`;
-            }, 3000);
-        }
+        bot();
     }
     render() {
         return (
-            <div id="container" class="container">
-                <div id="chat" class="chat">
-                    <div id="messages" class="messages"> How are you feeling? Good/Anxious/Depressed </div>
-                    <input id="input" type="text" placeholder="Write something..." autocomplete="off" autofocus="true" />
+            <div id="peekobot-container">
+                <div id="peekobot-inner">
+                    <div id="peekobot"></div>
                 </div>
             </div>
         )
