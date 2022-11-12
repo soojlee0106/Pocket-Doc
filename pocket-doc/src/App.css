@@ -188,7 +188,7 @@ body {
 
 .chat-ask {
   background-color: #3c9c63;
-  margin-right: 0;
+  margin-right: 5px;
   margin-left: auto;
   color: hsl(0, 0%, 100%);
   box-shadow: 2px 2px 5px hsl(0, 0%, 60%);
