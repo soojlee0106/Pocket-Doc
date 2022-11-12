@@ -59,7 +59,7 @@ class Chatbot extends Component {
                 ]
             },
             5: {
-                text: 'Feel free to come by any time you need help!',
+                text: 'Feel free to come by any time you need help. The door is always open.',
                 options: [
                     {
                         text: "Got it.",
@@ -122,6 +122,27 @@ class Chatbot extends Component {
                     },
                 ]
             },
+            11: {
+                text: "We can try some techniques to reduce your anxiety levels.",
+                options: [
+                    {
+                        text: "Breathing technique",
+                        next: 19
+                    },
+                    {
+                        text: "Safe space technique",
+                        next: 20
+                    },
+                    {
+                        text: "Journaling technique",
+                        next: 21
+                    },
+                    {
+                        text: "Focusing technique",
+                        next: 22
+                    },
+                ]
+            },
             14: {
                 text: "Please dial 119 and or 112 immediately.",
                 next: 16
@@ -133,7 +154,7 @@ class Chatbot extends Component {
                         text: "Crisis Lines",
                         url: "https://www.therapyroute.com/article/suicide-hotlines-and-crisis-lines-in-south-korea"
                     },
-                ]
+                ],
             },
             16: {
                 text: "We are all here to help you. So call us.",
@@ -150,6 +171,141 @@ class Chatbot extends Component {
             },
             18: {
                 text: "We can get through this together. I'm here by your side.",
+            },
+            19: {
+                text: "The following breathing exercise is quite simple.",
+                next: 23
+            },
+            23: {
+                text: "The following breathing exercise is quite simple. It's called 4-7-8 breathing.",
+                options: [
+                    {
+                        text: "I haven't heard of it.",
+                        next: 24
+                    },
+                    {
+                        text: "I already know it.",
+                        next: 29
+                    }
+                ]
+            },
+            24: {
+                text: "I'm glad to guide you through it.",
+                next: 26
+            },
+            26: {
+                text: "First, inhale for 4 seconds.",
+                next: 27
+            },
+            27: {
+                text: "Next, hold that breath for 7 seconds.",
+                next: 28
+            },
+            28: {
+                text: "Then, release it for 8 seconds. Easy, right?",
+                options: [
+                    {
+                        text: "Yup 😊",
+                        next: 29
+                    },
+                ]
+            },
+            29: {
+                text: "Let's get started then.",
+                next: 30
+            },
+            30: {
+                text: "First, inhale for 4 seconds.",
+                next: 31
+            },
+            31: {
+                text: "Next, hold that breath for 7 seconds.",
+                next: 32
+            },
+            32: {
+                text: "Then, release it for 8 seconds.",
+                options: [
+                    {
+                        text: "Done 😮‍💨",
+                        next: 33
+                    },
+                ]
+            },
+            33: {
+                text: "One more time.",
+                next: 34
+            },
+            34: {
+                text: "First, inhale for 4 seconds.",
+                next: 35
+            },
+            35: {
+                text: "Next, hold that breath for 7 seconds.",
+                next: 36
+            },
+            36: {
+                text: "Then, release it for 8 seconds.",
+                options: [
+                    {
+                        text: "Done 😮‍💨",
+                        next: 37
+                    },
+                ]
+            },
+            37: {
+                text: "One last time.",
+                next: 38
+            },
+            38: {
+                text: "First, inhale for 4 seconds.",
+                next: 39
+            },
+            39: {
+                text: "Next, hold that breath for 7 seconds.",
+                next: 40
+            },
+            40: {
+                text: "Then, release it for 8 seconds.",
+                options: [
+                    {
+                        text: "Done 😮‍💨",
+                        next: 41
+                    },
+                ]
+            },
+            41: {
+                text: "Has this exercise helped you relax?",
+                options: [
+                    {
+                        text: "Yes 👍",
+                        next: 42
+                    },
+                    {
+                        text: "No 👎",
+                        next: 43
+                    },
+                ]
+            },
+            42: {
+                text: "I'm so glad I could help.",
+                next: 44
+            },
+            43: {
+                text: "I'm sorry it didn't help. There are many other ways I could help you.",
+                next: 44
+            },
+            44: {
+                text: "Would you like to try other exercises?",
+                options: [
+                    {
+                        text: "Yes 👍",
+                        next: 11
+                    },
+                    {
+                        text: "No 👎",
+                        next: 5
+                    },
+                ]
             },
 
         };
